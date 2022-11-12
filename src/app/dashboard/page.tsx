@@ -1,3 +1,4 @@
+
 interface Data {
   value: string,
   date: string,
@@ -10,7 +11,7 @@ async function getData(){
 }
 
 export default async function Dashboard(){
-  const data: Array<Data> = await getData();
+  const data: Array<Data> = await (getData());
   return(
     <div>
       <ul>
