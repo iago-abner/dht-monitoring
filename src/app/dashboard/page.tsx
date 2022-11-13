@@ -1,26 +1,40 @@
+'use client';
+import { useEffect, useState } from "react";
 
 interface Data {
-  value: string,
+  value: number,
   date: string,
   id: number
 }
 
-async function getData(){
-  const res = await fetch('http://localhost:3000/api/temp')
-  return res.json()
-}
+export default function Dashboard(){
+  const [value, setValue] = useState(0);
 
-export default async function Dashboard(){
-  const data: Array<Data> = await (getData());
+  useEffect(() => {
+    const interval = setInterval(() => {
+      getData();
+    }, 5000);
+  return () => clearInterval(interval);
+  }, []);
+
+  const getData = async () => {
+    try{
+      const res = await fetch('http://localhost:3000/api/')
+      const data: Array<Data> = await res.json()
+
+      const temperature = data.at(-1)?.value
+      temperature !== undefined ? setValue(temperature) : setValue(0)
+      
+    }catch(err){
+      console.log(err)
+    }
+  }
+
   return(
-    <div>
-      <ul>
-        {data.map((temp) => {
-          return(
-          <li key={temp.id}><span>date: {temp.date}</span> temp:{temp.value}</li>
-          )
-        })}
-      </ul>
-    </div>
+    <h1>
+      {
+        value
+      }  
+    </h1>
   )
 }

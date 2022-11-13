@@ -12,7 +12,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       break
     case "POST":
       const data = req.body
-      arr.push({value: data.temperature, date: new Date().toLocaleDateString() , id: randomUUID()})
+      arr.push({value: data.temperature, date: new Date().toLocaleTimeString(), id: randomUUID()})
       res.status(201).json(arr)
       break
     default:
