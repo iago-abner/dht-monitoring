@@ -1,12 +1,11 @@
 'use client';
+import Link from 'next/link';
+import './global.css';
 
-import Link from 'next/link'
-import {usePathname} from 'next/navigation'
-
-export default function NavLink({href, children}: any){
-  const pathName = usePathname();
+export default function NavLink({href, children, className}: any){
+  //const pathName = usePathname();
 
   return(
-    <Link href={href}>{children}</Link>
+    <Link href={href} className={className}>{children}</Link>
   )
 }
