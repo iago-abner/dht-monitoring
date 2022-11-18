@@ -34,14 +34,17 @@ export default function Dashboard(){
   }
 
   return(
-    <div className="bg-indigo-900 relative overflow-hidden h-screen">
+    <div className="bg-indigo-900 relative overflow-hidden h-screen ">
       <Image alt="campfire" src={ campfire } className="absolute h-full w-full object-cover" />
       <div className="inset-0 bg-black opacity-25 absolute">
       </div>
-      <div className="container mx-auto justify-center px-6 md:px-12 relative z-10 flex items-center py-32 xl:py-40">
-            <span className="font-bold uppercase text-yellow-400">
-              {value}
-            </span>
+      <div className="container mx-6 justify-center py-32 md:px-8 relative z-10 flex items-center my-20 xl:my-20">
+            <div className="py-32 px-56 backdrop-blur-xl bg-white/10 rounded-xl">
+              <h1 className="font-bold text-3xl mb-8">Temperatura</h1>
+              <span className="font-bold text-3xl uppercase text-yellow-400 flex justify-center">
+                {value}
+              </span>
+            </div>  
         </div>
       </div>
     

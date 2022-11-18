@@ -9,7 +9,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
       <header className="absolute top-0 left-0 right-0 z-20">
           <nav className="container mx-auto px-6 md:px-12 py-4">
             <div className="md:flex justify-between items-center">
-            <span className={`hidden  md:flex xl:text-5xl md:text-4xl leading-tight text-blue-900 font-press2p`}>
+            <span className={`hidden  md:flex xl:text-xl md:text-xl leading-tight text-blue-900 font-press2p`}>
               Iago_Abner
             </span>
               <div className="flex justify-between items-center">
