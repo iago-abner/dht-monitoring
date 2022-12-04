@@ -28,7 +28,9 @@ export default function Dashboard() {
 
   const handleFetchData = async () => {
     try {
-      const res = await fetch("http://localhost:3000/api/");
+      const res = await fetch(
+        "https://next-temp-gdfvjkqrr-iago-abner.vercel.app/api/"
+      );
       const data: IProps = await res.json();
       const temp = toNumber(data.data.at(-1)?.temperature);
       setValue(temp);
