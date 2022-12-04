@@ -1,12 +1,12 @@
 'use client'
 import Image from 'next/image'
-import campfire from './assets/firecamp.jpg'
+import campfire from '../assets/firecamp.jpg'
 import './global.css'
 
 export default function Home(){
   return(
     <div className="bg-indigo-900 relative overflow-hidden h-screen">
-        <Image alt="campfire" src={ campfire } className="absolute h-full w-full object-cover" />
+        {campfire && <Image alt="campfire" src={ campfire } className="absolute h-full w-full object-cover" />}
         <div className="inset-0 bg-black opacity-25 absolute">
         </div>
         
