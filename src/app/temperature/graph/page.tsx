@@ -38,7 +38,7 @@ export default function GraphTemp() {
 
   const handleFetchData = async () => {
     try {
-      const res = await fetch("http://localhost:3000/api/");
+      const res = await fetch("/api");
       const data: IProps = await res.json();
       const temp = data.data.map((temp) => {
         const x: any = {};
