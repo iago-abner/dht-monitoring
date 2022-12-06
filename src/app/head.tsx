@@ -1,7 +1,7 @@
-export default function Head(){
-  return(
+export default function Head() {
+  return (
     <>
-      <title>Wheater</title>
+      <title>Weather</title>
     </>
-  )
+  );
 }

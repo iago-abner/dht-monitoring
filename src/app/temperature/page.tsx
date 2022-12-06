@@ -2,8 +2,9 @@
 import { toNumber } from "lodash";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import campfire from "../../assets/firecamp.jpg";
-import "../global.css";
+import hot from "src/assets/images/hot.gif";
+import { GraphButton } from "../../components/GraphButton";
+import "../../styles/global.css";
 
 interface IData {
   id: string;
@@ -38,24 +39,30 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="bg-indigo-900 relative overflow-hidden h-screen ">
-      <Image
-        alt="campfire"
-        src={campfire}
-        className="absolute h-full w-full object-cover"
-      />
-      <div className="inset-0 bg-black opacity-25 absolute"></div>
-      <div className="container mx-6 justify-center py-32 md:px-8 relative z-10 flex items-center my-20 xl:my-20">
-        {/* <div className="py-32 px-56 backdrop-blur-xl bg-white/10 rounded-xl"> */}
-        <div className="flex flex-col pt-10 pb-32  px-56 backdrop-blur-xl bg-white/25 rounded-xl">
-          <h1 className="flex top-2 font-bold text-3xl mb-16 text-indigo-900">
-            Temperatura
-          </h1>
-          <span className="font-bold text-3xl uppercase text-yellow-600 flex justify-center">
-            {value}
-          </span>
+    <div className="bg-gradient-to-b from-slate-700 to-slate-900 h-screen flex flex-col justify-center w-full items-center ">
+      <h1 className="flex top-2 font-bold text-3xl text-white">Temperatura</h1>
+      <div className="container  justify-center z-10 flex items-center my-10">
+        <div className="w-2/6 h-40 backdrop-blur-xl bg-black/50 rounded-xl flex items-center lg:mr-16">
+          <div className="hidden bg-white lg:flex w-32 h-32 rounded-md p-2 m-3 justify-start">
+            <Image
+              alt="temperature-icon"
+              src={hot}
+              className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500"
+            />
+          </div>
+          <div className="w-full flex justify-center">
+            <h1 className="font-bold text-9xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500 mr-0 lg:mr-12">
+              {value}
+            </h1>
+          </div>
         </div>
       </div>
+      <GraphButton
+        href="/temperature/graph"
+        className="flex  z-20 h-12 w-28 mt-2 mb-12 justify-center text-lg font-semibold text-white items-center bg-gradient-to-r rounded-lg from-cyan-500 to-blue-500 hover:opacity-80 hover:text-gray-800"
+      >
+        Gráfico
+      </GraphButton>
     </div>
   );
 }

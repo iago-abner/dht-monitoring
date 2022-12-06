@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import "./global.css";
+import "../styles/global.css";
 
 export default function NavLink({ href, children, className }: any) {
   return (

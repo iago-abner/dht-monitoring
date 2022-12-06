@@ -4,15 +4,16 @@ import {
   CartesianGrid,
   Line,
   LineChart,
+  ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
 } from "recharts";
-import "src/app/global.css";
+import "src/styles/global.css";
 
 interface IData {
   id: string;
-  temperature?: string;
+  temperature: string;
   humidity?: string;
   date: string;
 }
@@ -40,13 +41,10 @@ export default function GraphTemp() {
     try {
       const res = await fetch("/api");
       const data: IProps = await res.json();
-      const temp = data.data.map((temp) => {
-        const x: any = {};
-        x["temperature"] = temp.temperature;
-        x["date"] = temp.date;
-        return x;
-      });
-      console.log("aq:", temp);
+      const temp: PropsState[] = data.data.map((temp) => ({
+        temperature: temp.temperature,
+        date: temp.date,
+      }));
       setArr(temp);
     } catch (err) {
       console.log(err);
@@ -55,28 +53,21 @@ export default function GraphTemp() {
 
   return (
     <>
-      <div
-        className={`bg-gradient-to-t from-gray-400 to-gray-700 flex h-screen justify-center w-full items-center`}
-      >
+      <div className="bg-gradient-to-b from-slate-700 to-slate-900 flex h-screen justify-center w-full items-center">
         <div className="flex absolute h-2/3 w-2/3 mt-12">
-          {/* <Image
-            alt="dsad"
-            src={bg}
-            className="w-full h-full rounded-2xl z-10"
-          /> */}
-          <div className="flex absolute h-full w-full rounded-2xl font-semibold text-2xl text-neutral-900 backdrop-blur-sm flex-col justify-center items-center bg-black/20 z-20">
-            <LineChart
-              width={900}
-              height={400}
-              data={arr}
-              margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
-            >
-              <Line type="monotone" dataKey="temperature" stroke="#dcc31e" />
-              <CartesianGrid stroke="#212121" strokeDasharray="5 5" />
-              <XAxis dataKey="date" stroke="#212121" />
-              <YAxis stroke="#212121" />
-              <Tooltip />
-            </LineChart>
+          <div className="flex relative h-full w-full p-8 rounded-2xl font-semibold text-2xl text-neutral-900 backdrop-blur-sm flex-col justify-center items-center bg-black/50 z-20">
+            <ResponsiveContainer>
+              <LineChart
+                data={arr}
+                margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
+              >
+                <Line type="monotone" dataKey="temperature" stroke="#10c8f6" />
+                <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+                <XAxis dataKey="date" stroke="#ccc" />
+                <YAxis stroke="#ccc" />
+                <Tooltip />
+              </LineChart>
+            </ResponsiveContainer>
           </div>
         </div>
       </div>
