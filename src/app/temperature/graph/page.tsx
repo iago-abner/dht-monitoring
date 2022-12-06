@@ -56,18 +56,26 @@ export default function GraphTemp() {
       <div className="bg-gradient-to-b from-slate-700 to-slate-900 flex h-screen justify-center w-full items-center">
         <div className="flex absolute h-2/3 w-2/3 mt-12">
           <div className="flex relative h-full w-full p-8 rounded-2xl font-semibold text-2xl text-neutral-900 backdrop-blur-sm flex-col justify-center items-center bg-black/50 z-20">
-            <ResponsiveContainer>
-              <LineChart
-                data={arr}
-                margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
-              >
-                <Line type="monotone" dataKey="temperature" stroke="#10c8f6" />
-                <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-                <XAxis dataKey="date" stroke="#ccc" />
-                <YAxis stroke="#ccc" />
-                <Tooltip />
-              </LineChart>
-            </ResponsiveContainer>
+            {arr.length > 0 ? (
+              <ResponsiveContainer>
+                <LineChart
+                  data={arr}
+                  margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
+                >
+                  <Line
+                    type="monotone"
+                    dataKey="temperature"
+                    stroke="#10c8f6"
+                  />
+                  <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+                  <XAxis dataKey="date" stroke="#ccc" />
+                  <YAxis stroke="#ccc" />
+                  <Tooltip />
+                </LineChart>
+              </ResponsiveContainer>
+            ) : (
+              <h1 className="text-white">loading...</h1>
+            )}
           </div>
         </div>
       </div>
