@@ -8,8 +8,8 @@ datasource db {
 }
 
 model Data {
-  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
   temperature String?
   humidity    String?
-  date        String
+  date        DateTime @default(now())
 }

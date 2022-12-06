@@ -43,7 +43,7 @@ export default function GraphTemp() {
       const data: IProps = await res.json();
       const temp: PropsState[] = data.data.map((temp) => ({
         temperature: temp.temperature,
-        date: temp.date,
+        date: temp.date.substring(5, temp.date.length! - 5),
       }));
       setArr(temp);
     } catch (err) {
