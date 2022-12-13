@@ -1,10 +1,10 @@
-export function GraphLoading() {
+export function Graph() {
   return (
     <div className="flex h-screen w-full text-center text-2xl items-center justify-center mt-6">
       <div className="inline-flex items-center justify-center gap-1">
         <svg
           role="status"
-          className="mr-2 h-12 w-12 animate-spin fill-red-400 text-gray-100"
+          className="mr-2 h-12 w-12 animate-spin fill-cyan-400 text-gray-100"
           viewBox="0 0 100 101"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

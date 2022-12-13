@@ -1,4 +1,5 @@
 "use client";
+import { Graph } from "app/Graph";
 import { useEffect, useState } from "react";
 import {
   CartesianGrid,
@@ -11,7 +12,6 @@ import {
   YAxis,
 } from "recharts";
 import "src/styles/global.css";
-import { GraphLoading } from "../../../components/GraphLoading";
 
 interface IData {
   id: string;
@@ -77,7 +77,7 @@ export default function GraphTemp() {
                 </LineChart>
               </ResponsiveContainer>
             ) : (
-              <GraphLoading />
+              <Graph />
             )}
           </div>
         </div>
